@@ -1,0 +1,27 @@
+- slug: cms
+  title: headlessCMS導入支援
+  imageUrl: '/work.png'
+  roles:
+  - WordPress
+  - React
+  description: |-
+    フロントエンドの進化に伴いCMSも技術革新が！
+    パフォーマンスも意識したCMSを構築しましょう。
+- slug: go-gateway
+  title: 金融機関向け超高速Gateway開発
+  imageUrl: '/work.png'
+  roles:
+  - Go
+  description: |-
+    ハイパフォーマンスでトラフィックの多い
+    GatewayはGoを適用して高い生産性を！
+- slug: frontend-dev1
+  title: エネルギー会社様向けWebサービス開発
+  imageUrl: '/work.png'
+  roles:
+  - React
+  - Node.js
+  - AWS Lambda
+  description: |-
+    UI/UXを意識したフロントエンドシステムを
+    期間システムとのつなぎ込みまで対応しました。
