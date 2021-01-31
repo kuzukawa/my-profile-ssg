@@ -20,6 +20,7 @@
     "gatsby-source-filesystem": "^2.10.0",
     "gatsby-source-rss-feed": "^1.2.2",
     "gatsby-transformer-yaml": "^2.10.0",
+    "minireset.css": "^0.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0"

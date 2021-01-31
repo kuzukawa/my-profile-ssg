@@ -1,37 +1,58 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
+import styles from "./index.module.css";
+import Layout from "../components/Layout";
+import PostItem from "../components/PostItem";
+import WorkItem from "../components/WorkItem";
 
-// 1件のpostを表示するためのコンポーネント
-const PostItem = (props) => {
-  const { title, link, pubData } = props.post;
+const IndexPage = (props) => {
+  const { allFeedQiita, allWorksYaml } = props.data;
   return (
-    <li>
-      <a href={link}>
-        <small>{pubData}</small> {title}
-      </a>
-    </li>
+    <Layout>
+      <Helmet>
+        <title>My Gatsby Site</title>
+        <meta name="description" content="My first gatsby website " />
+      </Helmet>
+      <h2 className={styles.heading}>About</h2>
+      <p className={styles.profile}>
+        都内・横浜で活動しているソフトウェアエンジニアです。42才厄年。
+      </p>
+      <h2 className={styles.heading}>Posts</h2>
+      {allFeedQiita.nodes.map((post) => {
+        return <PostItem post={post} />;
+      })}
+      <h2 className={styles.heading}>Works</h2>
+      <div className={styles.workItems}>
+        {
+          allWorksYaml.nodes.map(work => {
+            return <WorkItem work={work} />
+          })
+        }
+      </div>
+    </Layout>
   );
 };
 
-const IndexPage = (props) => {
-  return (
-    <ul>
-      {props.data.allFeedQiita.nodes.map((post) => {
-        return <PostItem post={post} key={post.link} />;
-      })}
-    </ul>
-  );
-}
-
 export const query = graphql`
-  query IndexPageQuery {
+  query MyQuery {
     allFeedQiita {
       nodes {
         title
         link
-        pubDate
+        pubDate(formatString: "YYYY.MM.DD")
       }
-    }  
+    }
+    allWorksYaml(limit: 4) {
+      nodes {
+        slug
+        title
+        description
+        imageUrl
+        roles
+      }
+    }
   }
 `;
-export default IndexPage
+
+export default IndexPage;
